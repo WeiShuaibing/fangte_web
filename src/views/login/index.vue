@@ -44,9 +44,9 @@
           </span>
         </el-form-item>
       </el-tooltip>
-      <div>
+      <!--<div>
         <el-button type="text" @click="register">注册</el-button>
-      </div>
+      </div>-->
       <el-button
         :loading="loading"
         type="primary"

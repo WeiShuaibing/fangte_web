@@ -7,6 +7,12 @@ export function testInfo() {
     method: 'GET'
   })
 }
+export function getAllAdmin() {
+  return request({
+    url: BASE_URL + 'test/getAllAdmin',
+    method: 'GET'
+  })
+}
 
 export function pay() {
   return request({

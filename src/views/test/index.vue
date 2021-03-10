@@ -1,26 +1,48 @@
 <template>
     <div>
       <h2>测试页面 {{ msg }}</h2>
-      <el-button @click="payTest" type="primary">支付</el-button>
+      <el-table
+        :data="tableData"
+        style="width: 100%">
+        <el-table-column
+          prop="id"
+          label="ID"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="username"
+          label="姓名"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="password"
+          label="地址">
+        </el-table-column>
+      </el-table>
     </div>
 </template>
 
 <script>
-import { testInfo, pay } from '@/api/test'
+import { testInfo, pay, getAllAdmin } from '@/api/test'
 export default {
   name: 'TextIndex',
   data() {
     return {
-      msg: ''
+      msg: '',
+      tableData: []
     }
   },
   mounted() {
+    this.getAdmin()
   },
   methods: {
+    getAdmin() {
+      getAllAdmin().then(res => {
+        this.tableData = res.data
+      })
+    },
     getInfo() {
       testInfo().then(res => {
-        console.log(1111)
-        console.log(res)
         this.msg = res.data
       })
     },
